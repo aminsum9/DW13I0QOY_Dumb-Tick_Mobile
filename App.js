@@ -1,30 +1,42 @@
-// import {createAppContainer} from 'react-navigation';
-// import {createStackNavigator} from 'react-navigation-stack';
+import React from 'react';
+import {View, Text} from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
-// import Home from './src/pages/Home';
-// import EventDetail from './src/pages/eventdetail';
+import Home from './src/pages/Home';
+import Start from './src/pages/start';
+import EventDetail from './src/pages/event-detail';
 
-// const App = createStackNavigator(
-//   {
-//     Home: {
-//       screen: Home,
-//       navigationOptions: {
-//         title: 'Home',
-//       },
-//     },
-//     EventDetail: {
-//       screen: EventDetail,
-//       navigationOptions: {
-//         title: 'Event Detail',
-//       },
-//     },
-//   },
-//   {
-//     initialRouteName: 'Home',
-//   },
-// );
+const AppNavigator = createStackNavigator(
+  {
+    Start: {
+      screen: Start,
+      navigationOptions: {
+        title: 'Start',
+        header: null,
+      },
+    },
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        title: 'Home',
+        header: null,
+      },
+    },
+    EventDetail: {
+      screen: EventDetail,
+      navigationOptions: {
+        title: 'Event Detail',
+        header: null,
+      },
+    },
+  },
+  {
+    initialRouteName: 'Start',
+  },
+);
 
-// export default createAppContainer(App);
+export default createAppContainer(AppNavigator);
 
 // import React, {Component} from 'react';
 // import {Image} from 'react-native';
@@ -103,17 +115,3 @@
 //     );
 //   }
 // }
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
-
-class App extends Component {
-  render() {
-    return (
-      <View>
-        <Text>Tes</Text>
-      </View>
-    );
-  }
-}
-
-export default App;

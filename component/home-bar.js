@@ -17,23 +17,13 @@ import {
 export default class HomeBar extends Component {
   render() {
     return (
-      <Header style={{backgroundColor: '#e6494c'}}>
-        <Left>
-          <Button transparent>
-            <Icon name="menu" />
-          </Button>
-        </Left>
+      <Header style={{backgroundColor: '#fff'}}>
         <Body>
-          <Title>DUMBTICK</Title>
+          <Title style={{color: '#000'}}>
+            <Text>DumbTick App</Text>
+          </Title>
         </Body>
-        <Right>
-          <Thumbnail
-            source={{
-              uri:
-                'https://i1.wp.com/metro.co.uk/wp-content/uploads/2020/01/PRI_115666813.jpg?quality=90&strip=all&zoom=1&resize=644%2C454&ssl=1',
-            }}
-          />
-        </Right>
+        <Right></Right>
       </Header>
     );
   }
