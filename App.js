@@ -6,6 +6,8 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Home from './src/pages/Home';
 import Start from './src/pages/start';
 import EventDetail from './src/pages/event-detail';
+import CategoryPage from './src/pages/category-page';
+import Category from './src/pages/category';
 
 const AppNavigator = createStackNavigator(
   {
@@ -27,6 +29,20 @@ const AppNavigator = createStackNavigator(
       screen: EventDetail,
       navigationOptions: {
         title: 'Event Detail',
+        header: null,
+      },
+    },
+    CategoryPage: {
+      screen: CategoryPage,
+      navigationOptions: {
+        title: 'Category Page',
+        header: null,
+      },
+    },
+    Category: {
+      screen: Category,
+      navigationOptions: {
+        title: 'Category',
         header: null,
       },
     },

@@ -1,17 +1,11 @@
 import React, {Component} from 'react';
 import {View, Image, StyleSheet, ScrollView} from 'react-native';
 import HomeBar from '../../component/home-bar';
-import Footer from '../../component/footer';
-import Category from '../../component/tabs';
+import Category from './category';
 //Import React-Navigation
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import AntDesign from 'react-native-vector-icons/Ionicons';
-import {
-  createAppContainer,
-  FlatList,
-  TabBarBottom,
-  TabNavigator,
-} from 'react-navigation';
+import {FlatList} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import axios from 'axios';
 import {
@@ -67,6 +61,7 @@ class Home extends Component {
 
           <Category />
           <Text style={styles.allevents}>All Events</Text>
+
           <FlatList
             horizontal
             data={this.state.allevents}
@@ -92,8 +87,16 @@ class Home extends Component {
                   <CardItem>
                     <Left>
                       <Button
-                        transparent
-                        onPress={() => this.handlePress(item.id)}>
+                        style={styles.buttondetail}
+                        onPress={() => {
+                          this.props.navigation.navigate('EventDetail', {
+                            title: item.title,
+                            category: item.category ? item.category.name : '',
+                            image: item.image,
+                            description: item.description,
+                          });
+                          // this.props.navigation.navigate('EventDetail');
+                        }}>
                         <Text>Get Detail</Text>
                       </Button>
                     </Left>
@@ -163,6 +166,9 @@ export class Settings extends Component {
 }
 
 const styles = StyleSheet.create({
+  buttondetail: {
+    backgroundColor: '#e6494c',
+  },
   allevents: {
     fontSize: 30,
     marginLeft: 12,

@@ -1,18 +1,26 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {createAppContainer, FlatList} from 'react-navigation';
+import {
+  Text,
+  TouchableWithoutFeedback,
+  View,
+  StyleSheet,
+  Button,
+} from 'react-native';
+import {createAppContainer, FlatList, withNavigation} from 'react-navigation';
 import {Item} from 'native-base';
 import axios from 'axios';
 
-const data = new Array(15).fill(0);
-
-export default class Category extends React.Component {
+class Category extends React.Component {
   constructor() {
     super();
     this.state = {
       categories: [],
     };
   }
+
+  // handlePress = () => {
+  //   this.props.navigation.navigate('CategoryPage');
+  // };
 
   componentDidMount() {
     axios
@@ -38,7 +46,14 @@ export default class Category extends React.Component {
           renderItem={({item}) => {
             return (
               <Item style={styles.item}>
-                <Text style={styles.itemText}>{item.name}</Text>
+                <TouchableWithoutFeedback
+                  onPress={() => {
+                    this.props.navigation.navigate('CategoryPage', {
+                      categoryId: item.id,
+                    });
+                  }}>
+                  <Text style={styles.itemText}>{item.name}</Text>
+                </TouchableWithoutFeedback>
               </Item>
             );
           }}
@@ -66,3 +81,5 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
 });
+
+export default withNavigation(Category);
