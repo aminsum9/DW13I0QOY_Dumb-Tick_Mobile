@@ -9,6 +9,7 @@ import {
 import {createAppContainer, FlatList, withNavigation} from 'react-navigation';
 import {Item} from 'native-base';
 import axios from 'axios';
+import {category} from '../config/api';
 
 class Category extends React.Component {
   constructor() {
@@ -17,22 +18,11 @@ class Category extends React.Component {
       categories: [],
     };
   }
-
-  // handlePress = () => {
-  //   this.props.navigation.navigate('CategoryPage');
-  // };
-
   componentDidMount() {
-    axios
-      .get(`http://192.168.1.32:5000/api/eo/categories`)
-      .then(res => {
-        const data = res.data;
-        this.setState({categories: data});
-      })
-      .catch(error => {
-        console.log('Api call error');
-        alert(error.message);
-      });
+    category().then(response => {
+      const data = response;
+      this.setState({categories: data});
+    });
   }
 
   render() {
@@ -41,6 +31,7 @@ class Category extends React.Component {
         style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
         style={styles.view}>
         <FlatList
+          showsHorizontalScrollIndicator={false}
           horizontal
           data={this.state.categories}
           renderItem={({item}) => {
@@ -50,6 +41,7 @@ class Category extends React.Component {
                   onPress={() => {
                     this.props.navigation.navigate('CategoryPage', {
                       categoryId: item.id,
+                      categoryName: item.name,
                     });
                   }}>
                   <Text style={styles.itemText}>{item.name}</Text>
@@ -66,18 +58,30 @@ class Category extends React.Component {
 
 const styles = StyleSheet.create({
   view: {
-    height: 100,
+    height: 55,
   },
   item: {
-    backgroundColor: '#e6494c',
-    height: 50,
-    width: 200,
+    borderRadius: 10,
+    //border top
+    borderTopWidth: 1,
+    borderTopColor: 'lightgrey',
+    //border left
+    borderLeftWidth: 1,
+    borderLeftColor: '#e6494c',
+    //border right
+    borderRightWidth: 1,
+    borderRightColor: '#e6494c',
+    //border bottom
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgrey',
+    height: 35,
+    width: 150,
     display: 'flex',
     justifyContent: 'center',
   },
   itemText: {
-    fontSize: 20,
-    color: '#fff',
+    fontSize: 15,
+    // color: '#e6494c',
     textTransform: 'uppercase',
   },
 });

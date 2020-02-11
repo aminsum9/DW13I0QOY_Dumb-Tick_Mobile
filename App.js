@@ -8,6 +8,9 @@ import Start from './src/pages/start';
 import EventDetail from './src/pages/event-detail';
 import CategoryPage from './src/pages/category-page';
 import Category from './src/pages/category';
+import Login from './src/pages/login';
+import Test from './src/pages/test';
+import SearchEvent from './src/pages/search-event';
 
 const AppNavigator = createStackNavigator(
   {
@@ -15,6 +18,20 @@ const AppNavigator = createStackNavigator(
       screen: Start,
       navigationOptions: {
         title: 'Start',
+        header: null,
+      },
+    },
+    Login: {
+      screen: Login,
+      navigationOptions: {
+        title: 'Login Application',
+        header: null,
+      },
+    },
+    Test: {
+      screen: Test,
+      navigationOptions: {
+        title: 'Test',
         header: null,
       },
     },
@@ -35,7 +52,7 @@ const AppNavigator = createStackNavigator(
     CategoryPage: {
       screen: CategoryPage,
       navigationOptions: {
-        title: 'Category Page',
+        title: 'Event By Category',
         header: null,
       },
     },
@@ -46,6 +63,13 @@ const AppNavigator = createStackNavigator(
         header: null,
       },
     },
+    SearchEvent: {
+      screen: SearchEvent,
+      navigationOptions: {
+        title: 'Search Event',
+        header: null,
+      },
+    },
   },
   {
     initialRouteName: 'Start',
@@ -53,81 +77,3 @@ const AppNavigator = createStackNavigator(
 );
 
 export default createAppContainer(AppNavigator);
-
-// import React, {Component} from 'react';
-// import {Image} from 'react-native';
-// import HomeBar from './component/home-bar';
-// import {
-//   Container,
-//   Header,
-//   Title,
-//   Content,
-//   Footer,
-//   FooterTab,
-//   Button,
-//   Left,
-//   Right,
-//   Body,
-//   Icon,
-//   Text,
-//   Thumbnail,
-//   Card,
-//   CardItem,
-// } from 'native-base';
-
-// export default class Home extends Component {
-//   render() {
-//     return (
-//       <Container>
-//         <HomeBar />
-//         <Content>
-//           <Card>
-//             <CardItem>
-//               <Left>
-//                 {/* <Thumbnail source={{uri: 'Image URL'}} /> */}
-//                 <Body>
-//                   <Text>NativeBase</Text>
-//                   <Text note>GeekyAnts</Text>
-//                 </Body>
-//               </Left>
-//             </CardItem>
-//             <CardItem cardBody>
-//               <Image
-//                 source={{
-//                   uri:
-//                     'https://s3-ap-southeast-1.amazonaws.com/loket-production-sg/images/banner/20191202125057.JPG',
-//                 }}
-//                 style={{height: 200, width: null, flex: 1}}
-//               />
-//             </CardItem>
-//             <CardItem>
-//               <Left>
-//                 <Button transparent>
-//                   <Icon active name="thumbs-up" />
-//                   <Text>12 Likes</Text>
-//                 </Button>
-//               </Left>
-//               <Body>
-//                 <Button transparent>
-//                   <Icon active name="chatbubbles" />
-//                   <Text>4 Comments</Text>
-//                 </Button>
-//               </Body>
-//               <Right>
-//                 <Text>11h ago</Text>
-//               </Right>
-//             </CardItem>
-//           </Card>
-//         </Content>
-//         {/* -------- */}
-//         <Footer>
-//           <FooterTab style={{backgroundColor: '#e6494c'}}>
-//             <Button full>
-//               <Text>Footer</Text>
-//             </Button>
-//           </FooterTab>
-//         </Footer>
-//       </Container>
-//     );
-//   }
-// }
